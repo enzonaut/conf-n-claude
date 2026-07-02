@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:cmux.com)",
+      "Bash(cmux --help)",
+      "Bash(cmux themes *)",
+      "Bash(cmux docs *)",
+      "Bash(curl -fsSL https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json -o /tmp/cmux.schema.json)",
+      "Bash(python3 -)",
+      "Bash(env bash --version)",
+      "Bash(command -v bash)",
+      "Bash(echo \"path: $\\(command -v bash\\)\")",
+      "Bash(env bash -c 'mapfile -t a < <\\(printf \"x\\\\ny\\\\n\"\\); echo ok ${#a[@]}')"
+    ]
+  }
+}

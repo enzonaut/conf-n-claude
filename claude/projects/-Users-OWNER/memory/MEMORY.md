@@ -1,0 +1,1 @@
+- [Dotfiles setup](dotfiles-setup.md) — ryanthedev/dot-config in ~/.config, core dev stack, how it's wired
