@@ -7,6 +7,12 @@ Scrubbed backup of my Claude Code setup.
 - `claude/` - mirror of `~/.claude`: `CLAUDE.md`, `settings.json`, `settings.local.json`, `statusline.sh`, and per-project memory under `projects/*/memory/`.
 - `home/` - `OPINIONS.md` and `VOICE.md`, which live at `~` and are read by agents via `claude/CLAUDE.md`.
 
+## Refreshing
+
+Run `./sync.sh` to regenerate `claude/` and `home/` from the live files and scrub them in one step.
+It derives the machine username from `$HOME` and the owner handle/email from git config, and fails loudly if any identifier survives the scrub.
+Extra literals to scrub (e.g. personal email addresses) go in `.scrub-extra`, which is gitignored so the identifiers never land in the repo.
+
 ## Scrubbing
 
 Personal identifiers were removed before committing.
