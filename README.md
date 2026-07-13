@@ -6,6 +6,7 @@ Scrubbed backup of my Claude Code setup.
 
 - `claude/` - mirror of `~/.claude`: `CLAUDE.md`, `settings.json`, `settings.local.json`, `statusline.sh`, and per-project memory under `projects/*/memory/`.
 - `home/` - `OPINIONS.md` and `VOICE.md`, which live at `~` and are read by agents via `claude/CLAUDE.md`.
+- `config/` - mirror of `~/.config`: `herdr/config.toml` + `herdr/scripts/` (the terminal workspace manager) and `ghostty/config` (the terminal engine, whose Cmd-chord keybinds fire herdr's prefix shortcuts).
 
 ## Refreshing
 
@@ -24,3 +25,4 @@ Public GitHub repo slugs (plugin marketplaces, upstream dotfile remotes) are kep
 - `claude/` maps to `~/.claude/`.
 - Rename the `projects/-Users-OWNER*` directories to match your actual home path (Claude Code derives them from the project directory, e.g. `/Users/<username>/repos` becomes `-Users-<username>-repos`).
 - `home/OPINIONS.md` and `home/VOICE.md` map to `~/OPINIONS.md` and `~/VOICE.md`.
+- `config/` maps to `~/.config/` (`config/herdr/` -> `~/.config/herdr/`, `config/ghostty/` -> `~/.config/ghostty/`). Restore the `OWNER` paths in `herdr/config.toml` back to your username.

@@ -15,13 +15,21 @@ HANDLE="$(git -C "$REPO" config --get user.name || true)"
 [ -n "$HANDLE" ] || HANDLE="$(git -C "$REPO" remote get-url origin | sed -E 's#.*[:/]([^/]+)/[^/]+$#\1#')"
 EMAIL="$(git -C "$REPO" config --get user.email || true)"
 
-rm -rf "$REPO/claude" "$REPO/home"
-mkdir -p "$REPO/claude" "$REPO/home"
+rm -rf "$REPO/claude" "$REPO/home" "$REPO/config"
+mkdir -p "$REPO/claude" "$REPO/home" \
+   "$REPO/config/herdr/scripts" "$REPO/config/ghostty"
 
 cp "$HOME/.claude/CLAUDE.md" "$HOME/.claude/settings.json" \
    "$HOME/.claude/settings.local.json" "$HOME/.claude/statusline.sh" \
    "$REPO/claude/"
 cp "$HOME/OPINIONS.md" "$HOME/VOICE.md" "$REPO/home/"
+
+# ~/.config mirror — herdr (terminal workspace manager) reads config.toml and the
+# referenced helper scripts; ghostty (terminal engine) reads its config for the
+# cmd-chord -> herdr-prefix keybinds.
+cp "$HOME/.config/herdr/config.toml" "$REPO/config/herdr/"
+cp "$HOME/.config/herdr/scripts/"* "$REPO/config/herdr/scripts/"
+cp "$HOME/.config/ghostty/config" "$REPO/config/ghostty/"
 
 for d in "$HOME"/.claude/projects/*/memory; do
   proj="$(basename "$(dirname "$d")")"
@@ -31,7 +39,7 @@ for d in "$HOME"/.claude/projects/*/memory; do
 done
 
 scrub() { # scrub <literal> <replacement>
-  find "$REPO/claude" "$REPO/home" -type f -exec perl -pi -e \
+  find "$REPO/claude" "$REPO/home" "$REPO/config" -type f -exec perl -pi -e \
     "s{\Q$1\E}{$2}g" {} +
 }
 
@@ -50,7 +58,7 @@ if [ -f "$REPO/.scrub-extra" ]; then
 fi
 
 leftovers="$(grep -rnF -e "$HANDLE" -e "/Users/$USERNAME" -e "-Users-$USERNAME" \
-  ${EMAIL:+-e "$EMAIL"} "$REPO/claude" "$REPO/home" || true)"
+  ${EMAIL:+-e "$EMAIL"} "$REPO/claude" "$REPO/home" "$REPO/config" || true)"
 if [ -n "$leftovers" ]; then
   echo "ERROR: identifiers survived the scrub:" >&2
   echo "$leftovers" >&2

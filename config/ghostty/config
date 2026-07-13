@@ -1,0 +1,65 @@
+
+# Font settings
+font-family = "Hack Nerd Font Mono"
+font-size = 16
+
+# Window settings
+background-opacity = 0.96
+window-decoration = true
+macos-non-native-fullscreen = true
+
+# ──────────────────────────────────────────────
+# Theme: Tokyo Night — matches herdr (theme.name = tokyo-night, accent #7aa2f7).
+# Terminal stays neutral so herdr drives the look; ghostty's bg shows through
+# herdr's panel_bg="reset" panels at 0.96 opacity.
+# (was: monochromatic Matrix green / CRT phosphor — removed 2026-07-06)
+# ──────────────────────────────────────────────
+theme = TokyoNight Night
+
+# Send newline on Shift+Enter for Claude CLI
+keybind = shift+enter=text:\x1b\r
+
+# Cmd+V sends a literal ctrl+v so Claude Code reads the clipboard itself
+# (handles both text and images; verified text still pastes). Plain terminal
+# paste stays available on Cmd+Shift+V for zsh/nvim/anything else.
+keybind = super+v=text:\x16
+keybind = super+shift+v=paste_from_clipboard
+quit-after-last-window-closed = true
+
+# ──────────────────────────────────────────────────────────────
+# cmux-style Cmd shortcuts (added 2026-07-12)
+# Each fires herdr's prefix (Ctrl+Space = \x00) + a key in ONE press,
+# so the shortcut acts instantly with no visible prefix step.
+# The manual Ctrl+Space prefix and mouse capture are unchanged.
+# NOTE: Ghostty has NO inline comments — keybind lines must stay bare
+# (anything after the value, including "#", is sent as literal text).
+# ──────────────────────────────────────────────────────────────
+# Cmd+N  ->  New workspace            (herdr prefix+shift+n)
+keybind = super+n=text:\x00N
+# Cmd+T  ->  New tab in current space  (herdr prefix+c)
+keybind = super+t=text:\x00c
+# Cmd+D  ->  New pane, side-by-side     (herdr prefix+v)
+keybind = super+d=text:\x00v
+# Cmd+Shift+D  ->  New pane, top/bottom (herdr prefix+minus)
+keybind = super+shift+d=text:\x00-
+# Cmd+W  ->  Close pane               (herdr prefix+x)
+keybind = super+w=text:\x00x
+# Cmd+Shift+A  ->  Next agent          (herdr prefix+a)
+keybind = super+shift+a=text:\x00a
+# Cmd+/  ->  Help cheat-sheet          (herdr prefix+shift+h)
+keybind = super+slash=text:\x00H
+# Cmd+1..9  ->  Switch to tab 1..9
+keybind = super+1=text:\x001
+keybind = super+2=text:\x002
+keybind = super+3=text:\x003
+keybind = super+4=text:\x004
+keybind = super+5=text:\x005
+keybind = super+6=text:\x006
+keybind = super+7=text:\x007
+keybind = super+8=text:\x008
+keybind = super+9=text:\x009
+# Cmd+Option+Arrows  ->  Move focus between panes (herdr prefix+h/j/k/l)
+keybind = super+alt+left=text:\x00h
+keybind = super+alt+down=text:\x00j
+keybind = super+alt+up=text:\x00k
+keybind = super+alt+right=text:\x00l
