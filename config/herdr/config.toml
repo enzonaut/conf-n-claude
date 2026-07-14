@@ -57,6 +57,10 @@ remove_worktree = "prefix+shift+e"
 # ctrl (not alt) so no macOS option-as-alt hack is needed.
 [keys.indexed]
 agents = "ctrl"
+# Tab-by-number: bare ctrl+shift+1..9 jumps direct to a tab (no prefix). Same
+# raw passthrough as agents above, +shift. (switch_tab = prefix+shift+1..9 stays
+# as the prefix-mode fallback.)
+tabs = "ctrl+shift"
 
 # lazygit in a throwaway pane
 [[keys.command]]
