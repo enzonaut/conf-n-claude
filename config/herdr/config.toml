@@ -29,10 +29,16 @@ prefix = "ctrl+space"
 # pane focus intact since bare prefix+h is focus_pane_left.) Auto-reflects config.
 help = "prefix+shift+h"
 
-# Workspace navigation — vim J/K walks the sidebar, shift+1..9 jumps direct
+# Workspace navigation — vim J/K walks the sidebar; prefix+1..9 jumps to a space
+# direct (Cmd+1..9 via ghostty). Spaces own the PLAIN number row; tabs get the
+# shifted row (switch_tab below), so Cmd+1..9 switches spaces, not tabs.
 next_workspace = "prefix+shift+j"
 previous_workspace = "prefix+shift+k"
-switch_workspace = "prefix+shift+1..9"
+switch_workspace = "prefix+1..9"
+
+# Tabs moved off the plain number row (now spaces) onto shifted digits. Reachable
+# by pressing the prefix then shift+number; next/previous tab stay on prefix+n/p.
+switch_tab = "prefix+shift+1..9"
 
 # Agent cycling — a / A steps through the agent panel
 next_agent = "prefix+a"

@@ -48,7 +48,9 @@ keybind = super+w=text:\x00x
 keybind = super+shift+a=text:\x00a
 # Cmd+/  ->  Help cheat-sheet          (herdr prefix+shift+h)
 keybind = super+slash=text:\x00H
-# Cmd+1..9  ->  Switch to tab 1..9
+# Cmd+Shift+R  ->  Rename current space (herdr prefix+shift+w = rename_workspace)
+keybind = super+shift+r=text:\x00W
+# Cmd+1..9  ->  Switch to SPACE 1..9   (herdr prefix+1..9 = switch_workspace)
 keybind = super+1=text:\x001
 keybind = super+2=text:\x002
 keybind = super+3=text:\x003
